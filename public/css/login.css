@@ -1,0 +1,157 @@
+/* header ここから */
+.header-container {
+    display: flex;
+    width: 100%;
+    margin: auto;
+}
+
+.header-wrap {
+    margin-top: 10px;
+    background-color: aqua;
+    border-radius: 30px;
+    width: 300px;
+    height: 75px;
+}
+
+.header-p {
+    padding-left: 25px;
+    padding-top: 15px;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+.header-h1 {
+    font-family: arial black;
+    padding-left: 25px;
+    font-size: 40px;
+}
+
+.header-register{
+    width: 150px;
+    background-color: darkcyan;
+    text-align: center;
+    color: aliceblue;
+    border-radius: 30px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    padding: 7px 0;
+    margin-right: 20px;
+}
+
+.header-login{
+    width: 150px;
+    background-color: coral;
+    text-align: center;
+    color: aliceblue;
+    border-radius: 30px;
+    padding: 7px 0;
+}
+/* header ここまで */
+
+/* login ここから */
+.login-wrapper{
+    width: 700px;
+    margin: auto;
+}
+
+.login-title{
+    text-align: center;
+    font-size: 20px;
+    padding-top: 20px;
+}
+
+.login-user{
+    margin: auto;
+    display: block;
+    width: 300px;
+    padding-top: 15px;
+    border-radius: 10px;
+}
+
+.login-pas{
+    margin: auto;
+    display: block;
+    width: 300px;
+    padding-top: 15px;
+    border-radius: 10px;
+}
+
+.login-btn{
+    margin: auto;
+    display: block;
+    width: 220px;
+    margin-bottom: 50px;
+    padding: 10px;
+    color: white;
+    background: aqua;
+    border: 1px solid aqua;
+}
+
+.login-p{
+    margin-top: 3px;
+    text-align: center;
+    font-size: 10px;
+    margin-bottom: 20px;
+}
+
+.login-register{
+    width: 500px;
+    margin: auto;
+    border-top: 2px solid rgb(0, 255, 255);
+    border-bottom: 2px solid rgb(0, 255, 255);
+}
+
+.login-register-btn{
+    width: 220px;
+    margin: auto;
+    display: block;
+    padding: 10px;
+    margin-bottom: 30px;
+    color: white;
+    background: greenyellow;
+    border: 1px solid greenyellow;
+}
+
+.login-logout-register{
+    margin: auto;
+    display: block;
+    margin-top: 30px;
+    width: 220px;
+    padding: 10px;
+    color: white;
+    background: burlywood;
+    border: 1px solid burlywood;
+}
+
+.login-wrapper{
+    margin-top: 10px;
+    background-color: aquamarine;
+    height: 600px;
+    border-radius: 20px;
+}
+
+.login-container{
+    border-radius: 20px;
+    background-color: azure;
+    margin: 20px;
+    height: 520px;
+
+}
+
+.login-user-wrap{
+    padding-top: 50px;
+}
+
+.login-pas-wrap{
+    margin-top: 30px;
+    margin-bottom: 30px;
+}
+
+.login-user::placeholder{
+    font-weight: bold;
+}
+
+.login-pas::placeholder{
+    font-weight: bold;
+}
+
+/* login ここまで */
