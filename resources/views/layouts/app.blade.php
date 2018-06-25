@@ -26,13 +26,21 @@
                 <a href="{{ url('register') }}">
                     <p class="header-register">とうろくする</p>
                 </a>
-                <a href="{{ url('login') }}">
-                    <p class="header-login">ログインする</p>
-                </a>
+                
                 
                 <a href="{{ url('mypage') }}">
                     <p class="header-login">マイページ</p>
                 </a>
+                
+                @if (isset($user))
+                <a href="{{ url('logout') }}">
+                    <p class="header-login">ログアウト</p>
+                </a>
+                @else
+                <a href="{{ url('login') }}">
+                    <p class="header-login">ログインする</p>
+                </a>
+                @endif
                 
                 
             </div>

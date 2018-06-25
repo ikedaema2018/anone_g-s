@@ -16,8 +16,8 @@ use Auth;
 class AnoneController extends Controller
 {
     //
-    public function index(){
-        return view('index');
+    public function index(Request $request){
+        return view('index', ['user' => $request->user]);
     }
     
     
@@ -25,15 +25,15 @@ class AnoneController extends Controller
         return view('login'); 
     }
     
-    public function register(){
+    public function register(Request $request){
         $nigates = NigateList::all();
-        return view('register', ['nigates' => $nigates]);
+        return view('register', ['nigates' => $nigates,'user' => $request->user]);
     }
     
     public function register_act(Request $request){
         
         $validator = Validator::make($request->all(), [
-            'name' => 'required | min:1 | max:20',
+            'name' => 'required | min:1 | max:20 | unique:users',
             'password' => 'required | min:1 | max:20',
             'sex' => 'required | max:1',
             'school_year' => 'required | max:5',
@@ -63,6 +63,7 @@ class AnoneController extends Controller
             $user_profiles->nigate_id = $nigate[$i];
             $user_profiles->save();
         }
+        Auth::logout();
         return redirect('/');
     }
     
@@ -92,15 +93,18 @@ class AnoneController extends Controller
         
     }
     
+    public function logout(){
+        Auth::logout();
+        return redirect('/');
+    }
+    
     //mypageの表示,認証されていなかったらログインページへ
-    public function mypage() {
+    public function mypage(Request $request) {
         if(Auth::check()) {
-            $user = Auth::user();
-            $nigates = User_profile::where('user_id', $user->id)->get();
-            
+            $nigates = User_profile::where('user_id', $request->user->id)->get();
             
             return view('/mypage', [
-                'user' => $user,
+                'user' => $request->user,
                 'myNigates' => $nigates,
                 ]);
         }else{

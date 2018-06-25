@@ -41,6 +41,9 @@ class Kernel extends HttpKernel
             'throttle:60,1',
             'bindings',
         ],
+        'auth_user' => [
+            \App\Http\Middleware\AuthMiddleware::class,
+            ]
     ];
 
     /**

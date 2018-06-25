@@ -11,19 +11,20 @@
 |
 */
 
-Route::get('/', 'AnoneController@index');
+Route::get('/', 'AnoneController@index')
+->middleware('auth_user');
 
-Route::get('/login', 'AnoneController@login');
+Route::get('/login', 'AnoneController@login')
+->middleware('auth_user');
 
-Route::get('/register', 'AnoneController@register');
+Route::get('/logout', 'AnoneController@logout');
+
+Route::get('/register', 'AnoneController@register')
+->middleware('auth_user');
 
 Route::post('/register_act', 'AnoneController@register_act');
 
-Route::get('/home', 'HomeController@index');
-
 Route::post('/login_act', 'AnoneController@login_act');
-
-Route::get('/test', 'AnoneController@test');
 
 //管理者側のカテゴリーのルーティング
 
@@ -65,8 +66,8 @@ Route::post('/user_list/{user}', 'AnoneController@user_list_update_view');
 Route::delete('/user_list_delete/{user}', 'AnoneController@user_list_delete');
 
 //マイページの表示(ログインしてなかったらログインページにリダイレクト)
-Route::get('/mypage', 'AnoneController@mypage');
-
+Route::get('/mypage', 'AnoneController@mypage')
+->middleware('auth_user');
 
 
 
