@@ -14,9 +14,10 @@
                 </li>
                 <li>
                     <p class="">ニガテなこと</p>
+                    
                     @if(count($myNigates)>0)
                     @foreach($myNigates as $myNigate)
-                    <span>{{$myNigate->nigate_name}}.&nbsp;</span>
+                    <span>{{$myNigate->nigate_lists->nigate_name}}&nbsp;</span>
                     @endforeach
                     @endif
                 </li>

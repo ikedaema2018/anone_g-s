@@ -29,9 +29,12 @@
                 <a href="{{ url('login') }}">
                     <p class="header-login">ログインする</p>
                 </a>
+                
                 <a href="{{ url('mypage') }}">
                     <p class="header-login">マイページ</p>
                 </a>
+                
+                
             </div>
         </header>
         <!-- ヘッダー 終わり-->

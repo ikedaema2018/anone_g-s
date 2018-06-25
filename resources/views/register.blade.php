@@ -35,16 +35,13 @@
         </select>
         
         <p>苦手なものをいくつか選択してね！</p>
+        @if(count($nigates)>0)
+        @foreach($nigates as $nigate)
         <p>
-        <input type="checkbox" name="nigate[]" value="1">水泳
-        <input type="checkbox" name="nigate[]" value="2">算数
-        <input type="checkbox" name="nigate[]" value="3">漢字
+          <input type="checkbox" name="nigate[]" value="{{$nigate->id}}"/>{{$nigate->nigate_name}}
         </p>
-        <p>
-        <input type="checkbox" name="nigate[]" value="4">友達作り
-        <input type="checkbox" name="nigate[]" value="5">会話
-        <input type="checkbox" name="nigate[]" value="6">図工
-        </p>
+        @endforeach
+        @endif
         
         <button type="submit">登録</button>
     </form>

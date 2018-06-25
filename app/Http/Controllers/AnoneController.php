@@ -26,7 +26,8 @@ class AnoneController extends Controller
     }
     
     public function register(){
-        return view('register');
+        $nigates = NigateList::all();
+        return view('register', ['nigates' => $nigates]);
     }
     
     public function register_act(Request $request){
@@ -95,11 +96,12 @@ class AnoneController extends Controller
     public function mypage() {
         if(Auth::check()) {
             $user = Auth::user();
-            $nigate = User_profile::where('user_id', $user->id)->get();
+            $nigates = User_profile::where('user_id', $user->id)->get();
+            
             
             return view('/mypage', [
                 'user' => $user,
-                'myNigates' => $nigate,
+                'myNigates' => $nigates,
                 ]);
         }else{
             return redirect('/login');

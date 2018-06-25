@@ -4,6 +4,15 @@ namespace App;
 
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\Database\Eloquent\Model;
+
+class User_model extends Model
+{
+    public function user_profiles(){
+        return $this->hasMany('App\User_profile');
+    }
+}
+
 
 class User extends Authenticatable
 {
@@ -27,3 +36,5 @@ class User extends Authenticatable
         'password', 'remember_token',
     ];
 }
+
+
