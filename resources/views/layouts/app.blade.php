@@ -32,6 +32,10 @@
                     <p class="header-login">マイページ</p>
                 </a>
                 
+                <a href="{{ url('/') }}">
+                    <p class="header-login">トップページ</p>
+                </a>
+                
                 @isset($user)
                 <a href="{{ url('logout') }}">
                     <p class="header-login">ログアウト</p>
