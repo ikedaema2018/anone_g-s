@@ -18,10 +18,9 @@ class AuthMiddleware
     {
         if(Auth::check()) {
             $user = Auth::user();
-        }else{
-            $user = "";
+            $request->merge(['user'=>$user]);
         }
-        $request->merge(['user'=>$user]);
+        
         return $next($request);
     }
 }

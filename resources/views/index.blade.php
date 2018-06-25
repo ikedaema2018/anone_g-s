@@ -34,6 +34,11 @@
         <div>
             <h2>みんなのニガテ</h2>
             <div>
+                @if(count($threads)>0)
+                @foreach($threads as $thread)
+                <p><a href="{{url('user_thread/'.$thread->id)}}">{{$thread->thread_name}}</a></p>
+                @endforeach
+                @endif
                 <h3>べんきょう</h3>
                 <ul>
                     <li></li>

@@ -32,7 +32,7 @@
                     <p class="header-login">マイページ</p>
                 </a>
                 
-                @if (isset($user))
+                @isset($user)
                 <a href="{{ url('logout') }}">
                     <p class="header-login">ログアウト</p>
                 </a>
@@ -40,7 +40,7 @@
                 <a href="{{ url('login') }}">
                     <p class="header-login">ログインする</p>
                 </a>
-                @endif
+                @endisset
                 
                 
             </div>

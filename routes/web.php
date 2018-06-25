@@ -69,6 +69,10 @@ Route::delete('/user_list_delete/{user}', 'AnoneController@user_list_delete');
 Route::get('/mypage', 'AnoneController@mypage')
 ->middleware('auth_user');
 
+//スレッドのルーティング
+Route::get('/user_thread/{thread}', 'AnoneController@user_thread')
+->middleware('auth_user');
 
+Route::post('/user_thread', 'AnoneController@user_thread_act');
 
 

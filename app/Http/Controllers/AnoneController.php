@@ -7,6 +7,7 @@ use App\User_profile;
 use App\Category;
 use App\NigateList;
 use App\Thread;
+use App\Comment;
 use Illuminate\Http\Request;
 use Validator;
 use Auth;
@@ -17,7 +18,8 @@ class AnoneController extends Controller
 {
     //
     public function index(Request $request){
-        return view('index', ['user' => $request->user]);
+        $threads = Thread::all();
+        return view('index', ['user' => $request->user, 'threads' => $threads]);
     }
     
     
@@ -311,4 +313,36 @@ class AnoneController extends Controller
      
      //<==============ここまで管理者側のスレッドの処理================>
      
+     //<=====================スレッドの処理======================>
+     
+     public function user_thread(Thread $thread, Request $request){
+         $comments = Comment::where('thread_id', $thread->id)->get();
+         return view('user_thread', ['comments' => $comments, 'thread' => $thread, 'user' => $request->user]);
+     }
+     
+     public function user_thread_act(Request $request){
+         //認証チェック
+         if(!Auth::check()) {
+            return redirect('/login');
+        }
+         $validator = Validator::make($request->all(), [
+            'name' => 'required | min:1 | max:20',
+            'user_id' => 'required | min:1 | max:12',
+            'thread_id' => 'required | max:12',
+            'comment_name' => 'required',
+        ]);
+        
+        if ($validator->fails()){
+            return redirect('/user_thread'.$request->thread_id)
+            ->withInput()
+            ->withErrors($validator);
+        }
+         $comment = new Comment;
+         $comment->user_id = $request->user_id;
+         $comment->name = $request->name;
+         $comment->thread_id = $request->thread_id;
+         $comment->comment_name = $request->comment_name;
+         $comment->save();
+         return redirect('/user_thread/'.$request->thread_id);
+     }
 }
