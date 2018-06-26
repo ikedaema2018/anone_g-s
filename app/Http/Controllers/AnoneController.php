@@ -104,10 +104,16 @@ class AnoneController extends Controller
     public function mypage(Request $request) {
         if(Auth::check()) {
             $nigates = User_profile::where('user_id', $request->user->id)->get();
+            $comments = Comment::where('user_id', $request->user->id)
+            ->where('dekita_flag', 0)
+            ->orderBy('updated_at', 'desc')
+            ->take(5)
+            ->get();
             
             return view('/mypage', [
                 'user' => $request->user,
                 'myNigates' => $nigates,
+                'comments' => $comments,
                 ]);
         }else{
             return redirect('/login');
@@ -344,5 +350,35 @@ class AnoneController extends Controller
          $comment->comment_name = $request->comment_name;
          $comment->save();
          return redirect('/user_thread/'.$request->thread_id);
+     }
+     
+     //できたボタンを押した時の処理
+     public function dekita_edit(Comment $dekita){
+         return view('dekita_edit', ['comment' => $dekita]);
+     }
+     
+     public function dekita_act(Request  $request){
+         
+         $validator = Validator::make($request->all(), [
+            'id' => 'required',
+            'dekita_text' => 'required | min:1 | max:40',
+            'dekita_flag' => 'min:1 | max:1',
+        ]);
+        
+        if ($validator->fails()){
+            return redirect('/dekita/'.$request->id)
+            ->withInput()
+            ->withErrors($validator);
+        }
+        // echo $request->id;
+        // echo $request->dekita_text;
+        // echo $request->dekita_flag;
+        $comment = [
+        'dekita_text' => $request->dekita_text,
+        'dekita_flag' => 1
+        ];
+        Comment::where('id', $request->id)
+        ->update($comment);
+        return redirect('/mypage');
      }
 }

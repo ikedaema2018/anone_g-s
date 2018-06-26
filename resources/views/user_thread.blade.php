@@ -18,6 +18,9 @@
             <tr>
                 <td>{{$comment->name}}</td>
                 <td>{{$comment->comment_name}}</td>
+                @if($comment->dekita_flag == 1)
+                    <td>{{$comment->dekita_text}}</td>
+                @endif
             </tr>
             @endforeach
             @endif

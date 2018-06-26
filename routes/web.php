@@ -75,4 +75,9 @@ Route::get('/user_thread/{thread}', 'AnoneController@user_thread')
 
 Route::post('/user_thread', 'AnoneController@user_thread_act');
 
+//できたボタンを押した時のルーティング
+Route::post('/dekita/{dekita}', 'AnoneController@dekita_edit');
+Route::get('/dekita/{dekita}', 'AnoneController@dekita_edit');
 
+//できたのアップデート処理
+Route::post('/dekita_act', 'AnoneController@dekita_act');

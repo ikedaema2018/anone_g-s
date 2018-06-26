@@ -29,15 +29,26 @@
         <!-- ユーザーニガテ宣言ー はじまり-->
 
         <div class="nigate_sengen">
-            <h2>＊＊＊ちゃんが宣言したニガテ
+            <h2>{{$user->name}}ちゃんが宣言したニガテ
             </h2>
             <table>
                 <tr>
-                    <th>カテゴリ</th>
-                    <td>
-                        <a href="">ニガテ宣言内容</a>
-                    </td>
+                    <th>ニガテ</th>
+                    <th>できた！</th>
                 </tr>
+                @if (count($comments)>0)
+                @foreach($comments as $comment)
+                
+                <tr>
+                    <td>{{$comment->comment_name}}</td>
+                    <td><form action="{{url('dekita/'.$comment->id)}}" method="post">
+                        {{csrf_field()}}
+                      <button type="submit">できた！</button>
+                    </form></td>
+                </tr>
+                
+                @endforeach
+                @endif
             </table>
         </div>
         <!-- ユーザーニガテ宣言ー 終わり-->
