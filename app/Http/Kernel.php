@@ -43,6 +43,9 @@ class Kernel extends HttpKernel
         ],
         'auth_user' => [
             \App\Http\Middleware\AuthMiddleware::class,
+        ],
+        'kanri_user' => [
+            \App\Http\Middleware\KanriMiddleware::class,
             ]
     ];
 

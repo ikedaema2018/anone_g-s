@@ -19,6 +19,7 @@ class CreateUsersTable extends Migration
             $table->string('password');
             $table->string('sex', 1);
             $table->string('school_year', 10);
+            $table->integer('kanri_flag')->default(0);
             $table->timestamps();
             $table->rememberToken();
         });

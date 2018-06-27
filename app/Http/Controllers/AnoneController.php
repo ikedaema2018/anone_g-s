@@ -52,6 +52,7 @@ class AnoneController extends Controller
         $users->password = bcrypt($request->password);
         $users->sex = $request->sex;
         $users->school_year = $request->school_year;
+        // $users->kanri_flag = 1;
         $users->save();
         
         $aiu = User::orderBy('id', 'desc')->first();

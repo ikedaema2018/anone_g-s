@@ -28,42 +28,59 @@ Route::post('/login_act', 'AnoneController@login_act');
 
 //管理者側のカテゴリーのルーティング
 
-Route::get('/category', 'AnoneController@category');
+Route::get('/category', 'AnoneController@category')
+->middleware('kanri_user');
 
-Route::post('/category', 'AnoneController@category_insert');
+Route::post('/category', 'AnoneController@category_insert')
+->middleware('kanri_user');
 
-Route::delete('/category/{category}', 'AnoneController@category_delete');
+Route::delete('/category/{category}', 'AnoneController@category_delete')
+->middleware('kanri_user');
 
-Route::post('/category/{category}', 'AnoneController@category_update_view');
+Route::post('/category/{category}', 'AnoneController@category_update_view')
+->middleware('kanri_user');
 
-Route::post('/category_update', 'AnoneController@category_update');
+Route::post('/category_update', 'AnoneController@category_update')
+->middleware('kanri_user');
 
 //管理者側の苦手のルーティング
-Route::get('/nigate', 'AnoneController@nigate_list');
+Route::get('/nigate', 'AnoneController@nigate_list')
+->middleware('kanri_user');
 
-Route::post('/nigate', 'AnoneController@nigate_register');
+Route::post('/nigate', 'AnoneController@nigate_register')
+->middleware('kanri_user');
 
-Route::post('/nigate/{nigate}', 'AnoneController@nigate_update_view');
+Route::post('/nigate/{nigate}', 'AnoneController@nigate_update_view')
+->middleware('kanri_user');
 
-Route::post('/nigate_update', 'AnoneController@nigate_update');
+Route::post('/nigate_update', 'AnoneController@nigate_update')
+->middleware('kanri_user');
 
 //管理者側のスレッドのルーティング
-Route::get('/thread', 'AnoneController@thread');
+Route::get('/thread', 'AnoneController@thread')
+->middleware('kanri_user');
 
-Route::post('/thread', 'AnoneController@thread_register');
+Route::post('/thread', 'AnoneController@thread_register')
+->middleware('kanri_user');
 
-Route::post('/thread/{thread}', 'AnoneController@thread_update_view');
+Route::post('/thread/{thread}', 'AnoneController@thread_update_view')
+->middleware('kanri_user');
 
-Route::post('/thread_update', 'AnoneController@thread_update');
+Route::post('/thread_update', 'AnoneController@thread_update')
+->middleware('kanri_user');
 
-Route::delete('/thread/{thread}', 'AnoneController@thread_delete');
+Route::delete('/thread/{thread}', 'AnoneController@thread_delete')
+->middleware('kanri_user');
 
 //管理者側のユーザーリストのルーティング
-Route::get('/user_list', 'AnoneController@user_list');
+Route::get('/user_list', 'AnoneController@user_list')
+->middleware('kanri_user');
 
-Route::post('/user_list/{user}', 'AnoneController@user_list_update_view');
+Route::post('/user_list/{user}', 'AnoneController@user_list_update_view')
+->middleware('kanri_user');
 
-Route::delete('/user_list_delete/{user}', 'AnoneController@user_list_delete');
+Route::delete('/user_list_delete/{user}', 'AnoneController@user_list_delete')
+->middleware('kanri_user');
 
 //マイページの表示(ログインしてなかったらログインページにリダイレクト)
 Route::get('/mypage', 'AnoneController@mypage')
